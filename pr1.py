@@ -25,7 +25,7 @@ def check_simm(R: list) -> bool:
 def check_antisimm(R: list) -> bool:
     for el in R:
         pair = (el[1], el[0])
-        if pair in R:
+        if pair in R and el[1] != el[0]:
             return False
     return True
 
@@ -44,7 +44,7 @@ def check_lin(R: list) -> bool:
                 return False
     return True
 
-R = [(1, 1), (2, 3), (3, 2), (2, 2), (3, 3)]
+R = [(1, 1), (2, 2), (3, 3)]
 G = nx.DiGraph(directed=True)
 G.add_nodes_from(set([el[0] for el in R]))
 G.add_edges_from(R)
